@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 // import useStateAsync from "react-use-state-async";
-
 interface LoginFormInput {
   email: string;
   password: string;
@@ -18,6 +17,7 @@ export default function () {
   const onSubmit: SubmitHandler<LoginFormInput> = (data) => {
     console.log(data);
     console.log("SUBMITTED");
+    console.log({ beapi: import.meta.env.VITE_BACKEND_API });
   };
 
   return (
