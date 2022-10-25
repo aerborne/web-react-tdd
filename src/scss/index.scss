@@ -1,0 +1,14 @@
+@import "./_variables.scss";
+@import "./_fonts.scss";
+
+body {
+  background-color: $white;
+  color: $black;
+  @include font("primary", 400);
+}
+
+.paper {
+  background-color: $gray;
+  padding: 25px 30px;
+  border-radius: 15px;
+}
