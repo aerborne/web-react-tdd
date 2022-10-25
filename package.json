@@ -1,5 +1,5 @@
 {
-  "name": "react-karu-boilerplate",
+  "name": "react-karu-appkit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "add": "^2.0.6",
-    "formsy-react": "^2.2.7",
-    "formsy-react-components": "^2.0.0-alpha.2",
+    "bootstrap": "^5.2.2",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.38.0",
+    "react-use-state-async": "^0.0.3",
     "sass": "^1.55.0",
+    "slate": "^0.84.0",
+    "slate-react": "^0.83.2",
     "yarn": "^1.22.19"
   },
   "devDependencies": {

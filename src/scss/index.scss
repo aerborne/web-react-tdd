@@ -11,4 +11,34 @@ body {
   background-color: $gray;
   padding: 25px 30px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vh100 {
+  height: 100vh;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  @include font("secondary", 700);
+
+  input {
+    padding: 7px 25px;
+    outline: none;
+    border-radius: 5px;
+    border: 0;
+  }
+}
+
+.title-login {
+  color: $darkblue;
+  @include font("primary", 700)
+}
+
+.btn-login {
+  background-color: $darkblue;
+  color: $white;
+  @include font("primary", 400)
 }
