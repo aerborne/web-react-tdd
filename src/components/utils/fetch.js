@@ -1,6 +1,6 @@
-const axios = require("axios");
+import axios from "axios";
 
-export const httpRequest = (
+export const httpRequest = async (
   method,
   url,
   data,
@@ -10,7 +10,7 @@ export const httpRequest = (
 ) => {
   if (!window.navigator.onLine) throw new Error("no_internet");
 
-  return axios({
+  const result = await axios({
     headers: {
       "Content-Type": content_type,
       Accept: "application/json",
@@ -21,4 +21,10 @@ export const httpRequest = (
     data: data,
     responseType: responseType,
   });
+
+  // if (result.message === "UNAUTHENTICATED_ERROR") {
+
+  // }
+
+  return result;
 };

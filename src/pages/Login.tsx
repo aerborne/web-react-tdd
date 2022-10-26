@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { loginAPI } from "../components/api/index";
+import { useNavigate } from "react-router-dom";
 // import useStateAsync from "react-use-state-async";
 interface LoginFormInput {
   email: string;
@@ -8,16 +10,31 @@ interface LoginFormInput {
 }
 
 export default function () {
-  // const [formDisabled, setFormDisabled] = useStateAsync(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInput>();
-  const onSubmit: SubmitHandler<LoginFormInput> = (data) => {
-    console.log(data);
-    console.log("SUBMITTED");
-    console.log({ beapi: import.meta.env.VITE_BACKEND_API });
+  const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
+    setLoading(true);
+    try {
+      const result = await loginAPI(data);
+      if (result.status === 200) {
+        localStorage.setItem("user_access_token", result?.data?.access_token);
+        localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
+        localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
+        // navigate("/");
+        window.location.href = "/";
+      } else {
+        return setErrorMessage("Invalid Email and Password ");
+      }
+    } catch (err) {
+      setErrorMessage("Invalid Email and Password ");
+    }
+    setLoading(false);
   };
 
   return (
@@ -26,10 +43,19 @@ export default function () {
         {/* <Col xs={12}></Col> */}
         <Col
           xs={8}
+          lg={6}
+          xl={4}
           className="mx-auto vh100 d-flex flex-column justify-content-center"
         >
           <div className="paper">
             <div className="title-login text-center mb-3">LOGIN</div>
+            {errorMessage && (
+              <Row>
+                <Col>
+                  <div className="alert alert-danger">{errorMessage}</div>
+                </Col>
+              </Row>
+            )}
             <form className="form-login" onSubmit={handleSubmit(onSubmit)}>
               <input
                 className="mb-3"
@@ -47,8 +73,9 @@ export default function () {
                 {...register("password", { required: true })}
               />
               <input
+                value={loading ? "Loading..." : "Login"}
                 className="btn-login"
-                disabled={!!Object.keys(errors).length}
+                disabled={!!Object.keys(errors).length || loading}
                 type="submit"
               />
             </form>

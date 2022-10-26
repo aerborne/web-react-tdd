@@ -15,6 +15,7 @@ export default function ProtectedRoute({
   if (isAuthenticated) {
     return outlet;
   } else {
+    localStorage.clear();
     return <Navigate to={{ pathname: authenticationPath }} />;
   }
 }
