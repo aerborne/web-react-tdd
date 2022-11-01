@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Panel from "../../components/shared/panel";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
+
+import Panel from "../../components/shared/panel";
+import { storeDocumentAPI } from "../../components/api/index";
+
 import "react-quill/dist/quill.snow.css";
 
 interface ReportFormInput {
@@ -26,7 +29,7 @@ export default () => {
     },
     {
       label: "Session Title",
-      field: "sessionTitle",
+      field: "session_title",
       type: "text",
 
       payload: {
@@ -35,7 +38,7 @@ export default () => {
     },
     {
       label: "Session Status",
-      field: "sessionStatus",
+      field: "session_status",
       type: "text",
       payload: {
         required: true,
@@ -43,7 +46,7 @@ export default () => {
     },
     {
       label: "Session End Time",
-      field: "sessionEndTime",
+      field: "session_end",
       type: "text",
       payload: {
         required: true,
@@ -51,7 +54,7 @@ export default () => {
     },
     {
       label: "Session Resume Time",
-      field: "sessionResumeTime",
+      field: "session_resume",
       type: "text",
       payload: {
         required: true,
@@ -59,7 +62,7 @@ export default () => {
     },
     {
       label: "Privilege Hour",
-      field: "privilegeHour",
+      field: "privilege_hour",
       type: "editor",
       payload: {},
     },
@@ -71,31 +74,31 @@ export default () => {
     },
     {
       label: "BILLS APPROVED ON THIRD READING",
-      field: "billsApprovedOnThirdReading",
+      field: "bills_approved_on_third_hearing",
       type: "editor",
       payload: {},
     },
     {
       label: "CONCURRED WITH SENATE AMMENDMENTS",
-      field: "concurredWithSenateAmmendments",
+      field: "concurred_with_senate_ammendments",
       type: "editor",
       payload: {},
     },
     {
       label: "RESOLUTIONS ADOPTED",
-      field: "resolutionsAdopted",
+      field: "resolutions_adopted",
       type: "editor",
       payload: {},
     },
     {
       label: "BILLS CONSIDERED ON SECOND READING",
-      field: "billsConsideredOnSecondReading",
+      field: "bills_considered_on_second_reading",
       type: "editor",
       payload: {},
     },
     {
       label: "ELECTED TO THE BICAMERAL CONFERENCE",
-      field: "electedToTheBicameralConference",
+      field: "elected_to_the_bicameral_conference",
       type: "editor",
       payload: {},
     },
@@ -107,7 +110,7 @@ export default () => {
     },
     {
       label: "OTHER MATTERS",
-      field: "otherMatters",
+      field: "other_matters",
       type: "editor",
       payload: {},
     },
@@ -183,26 +186,26 @@ export default () => {
 
   const onSubmit: SubmitHandler<ReportFormInput> = async (data) => {
     setLoading(true);
-    console.log({ data, state });
-    // try {
-    //   const result = await loginAPI(data);
-    //   if (result.status === 200) {
-    //     localStorage.setItem("user_access_token", result?.data?.access_token);
-    //     localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
-    //     localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
-    //     navigate("/");
-    //   } else {
-    //     return setErrorMessage("Invalid Email and Password ");
-    //   }
-    // } catch (err) {
-    //   setErrorMessage("Invalid Email and Password ");
-    // }
+    try {
+      const result = await storeDocumentAPI({ ...data, ...state });
+      console.log({ result });
+      if (result.status === 201) {
+        // localStorage.setItem("user_access_token", result?.data?.access_token);
+        // localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
+        // localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
+        // navigate("/");
+      } else {
+        return setErrorMessage("Invalid Email and Password ");
+      }
+    } catch (err) {
+      setErrorMessage("Invalid Email and Password ");
+    }
     setLoading(false);
   };
 
   return (
     <Container>
-      <Row className="vh100 align-items-center justify-items-center">
+      <Row className="vh100 align-items-center justify-items-center my-5">
         <Col>
           <Panel title="Add Report">
             <form

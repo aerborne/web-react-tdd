@@ -3,7 +3,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { loginAPI } from "../components/api/index";
 import { useNavigate } from "react-router-dom";
-// import useStateAsync from "react-use-state-async";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 interface LoginFormInput {
   email: string;
   password: string;
@@ -48,7 +50,12 @@ export default function () {
           className="mx-auto vh100 d-flex flex-column justify-content-center"
         >
           <div className="paper">
-            <div className="title-login text-center mb-3">LOGIN</div>
+            <div className="title-login text-center mb-3">
+              {/* <span className="mr-3">
+                <FontAwesomeIcon icon={faUser} />
+              </span> */}
+              <div className="ml-3">LOGIN</div>
+            </div>
             {errorMessage && (
               <Row>
                 <Col>

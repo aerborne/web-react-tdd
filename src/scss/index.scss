@@ -1,5 +1,6 @@
 @import "./_variables.scss";
 @import "./_fonts.scss";
+@import "./tables.scss";
 
 body {
   background-color: $aliceblue !important;
@@ -25,7 +26,8 @@ body {
   @include font("secondary", 700);
 
   input {
-    padding: 7px 25px;
+    @include font("secondary", 400);
+    padding: 7px 15px;
     outline: none;
     border-radius: 5px;
     border: 0;
