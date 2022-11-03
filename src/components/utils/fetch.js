@@ -24,13 +24,13 @@ export const httpRequest = async (
     });
     return result;
   } catch (error) {
+    console.log({ error });
     // unauthenticated catch
     const status = error?.response?.status;
     if (status === 401) {
       localStorage.clear();
       window.location.href = "/login?alert=login_expired";
     }
-    s;
   }
 
   // if (result.message === "UNAUTHENTICATED_ERROR") {

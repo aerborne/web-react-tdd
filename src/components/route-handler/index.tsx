@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../Layout";
 import Home from "../../pages/Index";
 import Login from "../../pages/Login";
+import ReportView from "../../pages/reports/view";
 import ReportAdd from "../../pages/reports/add-report";
 import ProtectedRoute, { ProtectedRouteProps } from "./route-guard";
 
@@ -30,6 +31,15 @@ export default () => {
               <ProtectedRoute
                 {...defaultProtectedRouteProps}
                 outlet={<ReportAdd />}
+              />
+            }
+          />
+          <Route
+            path="/report/view/:id"
+            element={
+              <ProtectedRoute
+                {...defaultProtectedRouteProps}
+                outlet={<ReportView />}
               />
             }
           />
