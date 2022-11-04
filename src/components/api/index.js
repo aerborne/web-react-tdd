@@ -4,6 +4,11 @@ export const loginAPI = (payload) => {
   return httpRequest("post", "/api/auth/login", payload);
 };
 
+export const logoutAPI = () => {
+  const token = getToken();
+  return httpRequest("post", "/api/auth/logout", {}, token);
+};
+
 export const storeDocumentAPI = (payload) => {
   const token = getToken();
   return httpRequest("post", "/api/document", payload, token);

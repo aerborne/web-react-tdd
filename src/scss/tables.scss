@@ -9,7 +9,7 @@
 
 .ReactVirtualized__Table {
 
-  border: 1px solid $gray;
+  // border: 1px solid $gray;
 
   /* width */
   ::-webkit-scrollbar {
@@ -34,7 +34,7 @@
 }
 
 .ReactVirtualized__Table__Grid {
-  border: 1px solid $gray;
+  // border: 1px solid $gray;
   // padding: 0 0 0 15px;
 }
 
@@ -42,11 +42,11 @@
   width: 100%;
   background: $lightblue2;
 
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background: $lightblue;
   }
 
   &:hover {
-    background: $lightblue;
+    background: $lightblue3;
   }
 }
