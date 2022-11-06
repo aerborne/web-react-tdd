@@ -3,6 +3,7 @@ import Layout from "../Layout";
 import Home from "../../pages/Index";
 import Login from "../../pages/Login";
 import ReportView from "../../pages/reports/view";
+import ReportPrint from "../../pages/reports/print";
 import ReportAdd from "../../pages/reports/add-report";
 import ProtectedRoute, { ProtectedRouteProps } from "./route-guard";
 
@@ -45,6 +46,7 @@ export default () => {
           />
         </Route>
         <Route path="login" element={<Login />} />
+        <Route path="/report/view/:id/print" element={<ReportPrint />} />
       </Routes>
     </BrowserRouter>
   );

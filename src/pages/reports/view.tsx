@@ -5,6 +5,7 @@ import { getDocumentByIdAPI } from "../../components/api/index";
 import reportFields from "../../components/utils/report-fields";
 import Panel from "../../components/shared/panel";
 import Loader from "../../components/shared/loader";
+import { faPrint } from "@fortawesome/free-solid-svg-icons";
 
 export default () => {
   const { id } = useParams();
@@ -52,7 +53,16 @@ export default () => {
   };
   return (
     <Container className="mt-5">
-      <Panel title="Report Details">
+      <Panel
+        title="Report Details"
+        panelOptions={[
+          {
+            title: "Print Report",
+            to: `/report/view/${id}/print`,
+            icon: faPrint,
+          },
+        ]}
+      >
         {document ? <Row>{renderFields(document)}</Row> : <Loader />}
       </Panel>
     </Container>

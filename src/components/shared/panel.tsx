@@ -17,13 +17,13 @@ export default (props: Props) => {
           {(props.panelOptions || []).length > 0 &&
             (props.panelOptions || []).map((panelOption) => {
               return (
-                <Link to={panelOption.to}>
+                <Link key={panelOption.to} to={panelOption.to}>
                   {panelOption.icon && (
                     <span className="mr-1">
                       <FontAwesomeIcon icon={panelOption.icon} />
                     </span>
                   )}
-                  Add Report
+                  {panelOption.title}
                 </Link>
               );
             })}
