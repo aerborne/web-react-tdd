@@ -20,7 +20,7 @@ interface ReportFormInput {
 
 export default () => {
   const defaultFields = formFields
-    .filter(({ type }) => type === "editor")
+    .filter(({ type }: { type: string }) => type === "editor")
     .reduce((o, v) => {
       o[v.field] = "";
       return o;
@@ -96,12 +96,12 @@ export default () => {
         // localStorage.setItem("user_access_token", result?.data?.access_token);
         // localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
         // localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
-        // navigate("/");
+        navigate("/report");
       } else {
-        return setErrorMessage("Invalid Email and Password ");
+        return setErrorMessage("Something Happened");
       }
     } catch (err) {
-      setErrorMessage("Invalid Email and Password ");
+      setErrorMessage(JSON.stringify(err));
     }
     setLoading(false);
   };

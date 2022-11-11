@@ -22,20 +22,20 @@ export default () => {
 
   const renderFields = (document: object) => {
     return reportFields
-      .filter(({ field }: { field: string }) => !!document[field])
+      .filter(({ field }: { field: keyof object }) => !!document[field])
       .map(
         ({
           field,
           label,
           type,
         }: {
-          field: string;
+          field: keyof object;
           label: string;
           type: string;
         }) => {
           return (
             <Col xs={12}>
-              <div key={field} className="report-group">
+              <div key={field} className="report-group mb-3">
                 <label>{label}</label>
                 {type === "text" ? (
                   <div className="report-field">{document[field]}</div>

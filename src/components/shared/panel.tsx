@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 interface Props {
   title: String;
   children: JSX.Element | String;
-  noPadding: boolean;
+  noPadding?: boolean;
   panelOptions: object[];
 }
 

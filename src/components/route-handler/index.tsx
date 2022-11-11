@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../Layout";
 import Home from "../../pages/Index";
 import Login from "../../pages/Login";
+import ReportIndex from "../../pages/reports/index";
 import ReportView from "../../pages/reports/view";
 import ReportPrint from "../../pages/reports/print";
 import ReportAdd from "../../pages/reports/add-report";
@@ -23,6 +24,15 @@ export default () => {
               <ProtectedRoute
                 {...defaultProtectedRouteProps}
                 outlet={<Home />}
+              />
+            }
+          />
+          <Route
+            path="/report"
+            element={
+              <ProtectedRoute
+                {...defaultProtectedRouteProps}
+                outlet={<ReportIndex />}
               />
             }
           />

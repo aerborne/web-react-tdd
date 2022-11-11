@@ -12,33 +12,25 @@ const reportFields = [
     field: "session_title",
     type: "text",
 
-    payload: {
-      required: true,
-    },
+    payload: {},
   },
   {
     label: "Session Status",
     field: "session_status",
     type: "text",
-    payload: {
-      required: true,
-    },
+    payload: {},
   },
   {
     label: "Session End Time",
     field: "session_end",
     type: "text",
-    payload: {
-      required: true,
-    },
+    payload: {},
   },
   {
     label: "Session Resume Time",
     field: "session_resume",
     type: "text",
-    payload: {
-      required: true,
-    },
+    payload: {},
   },
   {
     label: "Privilege Hour",
