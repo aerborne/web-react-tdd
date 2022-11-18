@@ -1,6 +1,8 @@
 @import "./_variables.scss";
 @import "./_fonts.scss";
 @import "./tables.scss";
+@import "./loader.scss";
+@import "./print.scss";
 
 body {
   background-color: $aliceblue !important;
@@ -328,29 +330,10 @@ body {
   margin-right: 15px;
 }
 
-.print-page {
-  // border: 1px solid black;
-  // 297 x 210 mm
-  width: 210mm;
-  height: 297mm;
-  background-color: $white;
-  padding: 25.4mm;
-  font-size: 14.667px;
-  // page-break-inside: avoid;
-  page-break-after: always;
-
-  .header-img {
-    width: 100%;
-  }
-
-  .print-header {
-    display: flex;
-    flex-direction: row;
-    @include font("secondary", 700);
-
-    .print-header-label {
-      text-transform: uppercase;
-      margin-right: 20px;
-    }
-  }
+.font-weight-bold {
+  font-weight: 700;
 }
+
+// .row-details {
+  //   border-bottom: 3px solid $black;
+  // }

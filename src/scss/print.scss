@@ -1,0 +1,88 @@
+.print-page {
+  // border: 1px solid black;
+  // 297 x 210 mm
+  width: 210mm;
+  // height: 297mm;
+  background-color: $white;
+  padding: 25.4mm;
+  font-size: 14.667px;
+  // page-break-inside: avoid;
+  page-break-after: always;
+
+  .header-img {
+    width: 100%;
+  }
+
+  .print-header {
+    display: flex;
+    flex-direction: row;
+    @include font("secondary", 700);
+    // padding: 0;
+
+  }
+
+  .print-header-label {
+    text-transform: uppercase;
+    margin-right: 20px;
+  }
+
+  // .report-group {
+  //   padding: 0;
+
+  // }
+
+  .print-table {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    @include font("secondary", 700);
+
+    .text-left {
+      text-align: left;
+    }
+  }
+
+  .divider-line {
+    border-top: 3px solid $black;
+  }
+
+  .report-field {
+    text-align: justify;
+  }
+}
+
+// #document-print {
+
+// }
+
+
+.print-tb-margin {
+  padding: 25.4mm 0;
+
+  .print-img {
+    width: 100%;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #section-to-print,
+  #section-to-print * {
+    background-color: $white;
+    visibility: visible;
+  }
+
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 10%;
+}

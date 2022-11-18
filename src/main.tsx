@@ -1,11 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import RouteHandler from "./components/route-handler";
-import "./scss/index.scss";
+import { RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./scss/index.scss";
+import Layout from "./components/Layout";
+import ContextFeeder from "./components/context/index";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouteHandler />
+    <ContextFeeder>
+      {/* <Layout> */}
+      <RouteHandler />
+      {/* </Layout> */}
+    </ContextFeeder>
   </React.StrictMode>
 );

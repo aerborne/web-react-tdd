@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { logoutAPI } from "../api/index";
 
-function CollapsibleExample() {
+export default () => {
   const handleLogout = async () => {
     console.log("logout");
     await logoutAPI();
@@ -27,6 +27,4 @@ function CollapsibleExample() {
       </Container>
     </Navbar>
   );
-}
-
-export default CollapsibleExample;
+};

@@ -32,7 +32,7 @@ export default ({
     };
 
     fetchDocuments();
-  }, [setList]);
+  }, [setList, setLoading]);
 
   // const sortBy = "id";
   // const sortDirection = SortDirection.DESC;

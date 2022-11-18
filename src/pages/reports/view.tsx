@@ -1,11 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRouter } from "react";
 import { getDocumentByIdAPI } from "../../components/api/index";
 import reportFields from "../../components/utils/report-fields";
 import Panel from "../../components/shared/panel";
 import Loader from "../../components/shared/loader";
-import { faPrint } from "@fortawesome/free-solid-svg-icons";
+import { faPrint, faMultiply, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { useParams, useLocation } from "react-router-dom";
 
 export default () => {
   const { id } = useParams();
@@ -57,9 +57,20 @@ export default () => {
         title="Report Details"
         panelOptions={[
           {
-            title: "Print Report",
+            title: "Update Report",
+            to: `/report/view/${id}/edit`,
+            icon: faEdit,
+          },
+          {
+            title: "Remove Report",
             to: `/report/view/${id}/print`,
             icon: faPrint,
+            target: "_blank",
+          },
+          {
+            title: "Print Report",
+            to: `/report/view/${id}/remove`,
+            icon: faMultiply,
           },
         ]}
       >
