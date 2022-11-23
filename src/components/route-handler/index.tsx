@@ -14,6 +14,8 @@ import ReportView from "../../pages/reports/view";
 import ReportPrint from "../../pages/reports/print";
 import ReportAdd from "../../pages/reports/add-report";
 import ReportRemove from "../../pages/reports/remove";
+import ReportUpsert from "../../pages/reports/upsert-report";
+import ReportCompare from "../../pages/reports/compare";
 // import ProtectedRoute, { ProtectedRouteProps } from "./route-guard";
 // import Loader from "../shared/loader";
 import { getDocumentByIdAPI } from "../api/index";
@@ -58,7 +60,7 @@ const routeBuilder = (appContext) => {
         },
       },
       {
-        element: <ReportAdd />,
+        element: <ReportUpsert />,
         path: "report-add",
         loader: async () => {
           isAuthenticated();
@@ -82,11 +84,25 @@ const routeBuilder = (appContext) => {
         //   }
         // },
         children: [
-          {
-            element: <ReportRemove />,
-            path: "remove",
-          },
+          // {
+          //   element: <ReportRemove />,
+          //   path: "remove",
+          // },
         ],
+      },
+      {
+        element: <ReportCompare />,
+        path: "/report/view/:id/compare/:historyId",
+        loader: async () => {
+          isAuthenticated();
+        },
+      },
+      {
+        element: <ReportUpsert />,
+        path: "/report/view/:id/edit",
+        loader: async () => {
+          isAuthenticated();
+        },
       },
       {
         element: <ReportRemove />,

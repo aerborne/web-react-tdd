@@ -3,6 +3,8 @@
 @import "./tables.scss";
 @import "./loader.scss";
 @import "./print.scss";
+@import "./theme.scss";
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 body {
   background-color: $aliceblue !important;
@@ -41,26 +43,6 @@ body {
   @include font("primary", 700)
 }
 
-.btn-login {
-  background-color: $darkblue;
-  color: $white;
-  @include font("primary", 400);
-
-  &:disabled {
-    background-color: $dimblue;
-  }
-}
-
-.btn-darkblue {
-  background-color: $darkblue;
-  color: $white;
-  @include font("primary", 400);
-
-  &:disabled {
-    background-color: $dimblue;
-  }
-}
-
 .panel {
   background-color: $white;
   border: 1px solid $gray;
@@ -73,16 +55,23 @@ body {
     border-bottom: 1px solid $gray;
     display: flex;
     align-items: center;
+    font-size: 22px;
+    text-transform: uppercase;
 
     .panel-options {
       margin-left: auto;
+      text-transform: capitalize;
+
+      .kebab-option-icon {
+        font-size: 18px;
+      }
 
       a {
         background-color: $white;
         color: $black;
         text-decoration: none;
         border: 0;
-        padding: 5px 10px;
+        padding: 8px 20px;
         @include font("primary", 400);
         transition: 0.3s;
 
@@ -335,5 +324,56 @@ body {
 }
 
 // .row-details {
-  //   border-bottom: 3px solid $black;
-  // }
+//   border-bottom: 3px solid $black;
+// }
+
+.kebab-dropdown {
+  &.dropdown-toggle::after {
+    // content: "";
+    display: none;
+    // border: none;
+  }
+
+  .kebab-item {
+    padding: 10px 25px;
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.group-alternate {
+  .row-alternate {
+    background: $lightblue2;
+    padding: 8px 10px;
+
+    &:nth-child(odd) {
+      background: $lightblue;
+    }
+  }
+}
+
+.history-log {
+  .row-alternate {
+    font-weight: 400 !important;
+
+    .active {
+      font-weight: 700 !important;
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $darkblue;
+  transition: 0.3s;
+
+  .active {
+    font-weight: 700 !important;
+  }
+}
+
+.diff-bl {
+  border-left: 2px solid $black;
+}

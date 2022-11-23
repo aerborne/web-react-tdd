@@ -242,7 +242,11 @@ export default function PrintPage() {
 
   return !!document ? (
     <>
-      <div ref={printPageRef} className="print-page" id="document-print">
+      <div
+        ref={printPageRef}
+        className="mx-auto my-5 print-page"
+        id="document-print"
+      >
         <div id="section-to-print">
           {/* <Row>
           <Col xs={12}>

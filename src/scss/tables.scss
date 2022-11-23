@@ -39,7 +39,7 @@
 }
 
 .ReactVirtualized__Table__row {
-  width: 100%;
+  width: 100% !important;
   background: $lightblue2;
 
   &:nth-child(even) {

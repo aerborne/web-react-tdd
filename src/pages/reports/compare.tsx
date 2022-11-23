@@ -9,7 +9,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import moment from "moment";
 
 export default () => {
-  const { id } = useParams();
+  const { id, historyId } = useParams();
   const [document, setDocument] = useState();
   const [history, setHistory] = useState([]);
   useEffect(() => {
@@ -24,6 +24,7 @@ export default () => {
   }, [setDocument]);
 
   const renderFields = (document: object) => {
+    console.log({ document });
     return reportFields
       .filter(({ field }: { field: keyof object }) => !!document[field])
       .map(
@@ -37,7 +38,7 @@ export default () => {
           type: string;
         }) => {
           return (
-            <Col xs={12}>
+            <Col xs={12} key={field}>
               <div key={field} className="report-group mb-3">
                 <label>{label}</label>
                 {type === "text" ? (
@@ -56,10 +57,47 @@ export default () => {
   };
   return (
     <Container className="my-5">
+      <Row className="mb-4">
+        <Col xs={12}>
+          <Panel title="ChangeLog" noPadding>
+            <>
+              <Container className="history-log group-alternate">
+                {!document ? (
+                  <Loader className="my-3" />
+                ) : (
+                  history.map(
+                    ({
+                      updated_at,
+                      id: _historyId,
+                    }: {
+                      updated_at: string;
+                      id: string | number;
+                    }) => {
+                      console.log({ _historyId, historyId });
+                      return (
+                        <Row className="row-alternate" key={_historyId}>
+                          <Link
+                            className={`link ${
+                              Number(historyId) === _historyId ? "active" : ""
+                            }`}
+                            to={`/report/view/${id}/compare/${_historyId}`}
+                          >
+                            {moment(updated_at).format("MMMM D YYYY h:mm:ss A")}
+                          </Link>
+                        </Row>
+                      );
+                    }
+                  )
+                )}
+              </Container>
+            </>
+          </Panel>
+        </Col>
+      </Row>
       <Row>
-        <Col xs={12} lg={8}>
+        <Col xs={12}>
           <Panel
-            title="Report Details"
+            title="Compare"
             panelOptions={[
               {
                 title: "Update Report",
@@ -79,40 +117,31 @@ export default () => {
               },
             ]}
           >
-            {document ? <Row>{renderFields(document)}</Row> : <Loader />}
-          </Panel>
-        </Col>
-        <Col xs={12} lg={4}>
-          {console.log({ history })}
-          <Panel title="ChangeLog" noPadding>
-            <>
-              <Container className="group-alternate">
+            <Row>
+              <Col xs={6}>{document ? renderFields(document) : <Loader />}</Col>
+              <Col xs={6} className="diff-bl">
                 {!document ? (
-                  <Loader className="my-3" />
+                  <Loader />
                 ) : (
-                  history.map(
-                    ({
-                      updated_at,
-                      id: historyId,
-                    }: {
-                      updated_at: string;
-                      id: string | number;
-                    }) => {
-                      return (
-                        <Row className="row-alternate" key={historyId}>
-                          <Link
-                            className="link"
-                            to={`/report/view/${id}/compare/${historyId}`}
-                          >
-                            {moment(updated_at).format("MMMM D YYYY h:mm:ss A")}
-                          </Link>
-                        </Row>
-                      );
-                    }
+                  renderFields(
+                    history.reduce((prev, value) => {
+                      // console.log({ valueId: value?.id, historyId, value });
+                      // if (value?.id === Number(historyId)) {
+                      //   const parsedValue = JSON.parse(value?.value);
+                      //   console.log({ parsedValue });
+                      //   return parsedValue;
+                      // }
+
+                      // return prev;
+
+                      return value?.id === Number(historyId)
+                        ? JSON.parse(value?.value)
+                        : prev;
+                    }, {})
                   )
                 )}
-              </Container>
-            </>
+              </Col>
+            </Row>
           </Panel>
         </Col>
       </Row>

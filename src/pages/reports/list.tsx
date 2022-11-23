@@ -58,7 +58,7 @@ export default () => {
               </Link>
             );
           }}
-          width={160}
+          width={260}
         />
         <Column
           dataKey="updated_at"

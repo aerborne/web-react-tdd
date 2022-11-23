@@ -108,7 +108,7 @@ export default () => {
 
   return (
     <Container>
-      <Row className="vh100 align-items-center justify-items-center my-5">
+      <Row className="align-items-center justify-items-center my-5">
         <Col>
           <Panel title="Add Report">
             <form
