@@ -123,6 +123,10 @@ export default () => {
       );
     });
 
+  const onClose = () => {
+    navigate(id ? `/report/view/${id}` : "/report");
+  };
+
   const onSubmit: SubmitHandler<ReportFormInput> = async (data) => {
     setLoading(true);
     try {
@@ -132,7 +136,7 @@ export default () => {
         // localStorage.setItem("user_access_token", result?.data?.access_token);
         // localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
         // localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
-        navigate(id ? `/report/view/${id}` : "/report");
+        onClose();
       } else {
         return setErrorMessage("Something Happened");
       }
@@ -155,7 +159,7 @@ export default () => {
           </Col>
         </Row>
       )}
-      <Row className="vh100 align-items-center justify-items-center my-5">
+      <Row className="align-items-center justify-items-center my-5">
         <Col>
           <Panel title={`${id ? "Update Report" : "Add Report"}`}>
             <form
@@ -175,7 +179,7 @@ export default () => {
                   <Button
                     variant="gray"
                     className="mt-3 px-4 mr-3"
-                    onClick={() => navigate(`/report/view/${id}`)}
+                    onClick={onClose}
                   >
                     {"Cancel"}
                   </Button>

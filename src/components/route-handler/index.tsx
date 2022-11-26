@@ -6,16 +6,16 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { useContext } from "react";
-import Layout from "../Layout";
-import Home from "../../pages/Index";
-import Login from "../../pages/Login";
+import Home from "../../pages";
+import Login from "../../pages/login";
 import ReportIndex from "../../pages/reports/index";
 import ReportView from "../../pages/reports/view";
 import ReportPrint from "../../pages/reports/print";
-import ReportAdd from "../../pages/reports/add-report";
 import ReportRemove from "../../pages/reports/remove";
 import ReportUpsert from "../../pages/reports/upsert-report";
 import ReportCompare from "../../pages/reports/compare";
+
+import ReviewIndex from "../../pages/reviews/index";
 // import ProtectedRoute, { ProtectedRouteProps } from "./route-guard";
 // import Loader from "../shared/loader";
 import { getDocumentByIdAPI } from "../api/index";
@@ -107,10 +107,25 @@ const routeBuilder = (appContext) => {
       {
         element: <ReportRemove />,
         path: "/report/view/:id/remove",
+        loader: async () => {
+          isAuthenticated();
+        },
       },
       {
         element: <ReportPrint />,
         path: "/report/view/:id/print",
+        loader: async () => {
+          isAuthenticated();
+        },
+      },
+    ],
+    reviewRoute: [
+      {
+        element: <ReviewIndex />,
+        path: "/review",
+        loader: async () => {
+          isAuthenticated();
+        },
       },
     ],
   };

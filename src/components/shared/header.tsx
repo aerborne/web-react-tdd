@@ -1,3 +1,4 @@
+import { NavLink } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -5,7 +6,6 @@ import { logoutAPI } from "../api/index";
 
 export default () => {
   const handleLogout = async () => {
-    console.log("logout");
     await logoutAPI();
     localStorage.clear();
     window.location.href = "/";
@@ -17,8 +17,8 @@ export default () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/report">Reports</Nav.Link>
-            <Nav.Link href="/user">Users</Nav.Link>
+            <NavLink href="/report">Reports</NavLink>
+            <NavLink href="/review">Reviews</NavLink>
           </Nav>
           <Nav>
             <Nav.Link onClick={() => handleLogout()}>Logout</Nav.Link>
