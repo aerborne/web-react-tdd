@@ -100,11 +100,36 @@
     position: absolute;
     left: 0;
     top: 0;
+
+    .content {
+      width: 100%;
+      margin: 120px auto;
+
+      &>* {
+        page-break-after: always;
+        // page-break-inside: avoid;
+      }
+
+      .print-table {
+        margin: 0 auto;
+        width: 100%;
+        text-align: left;
+        @include font("secondary", 700);
+
+        .text-left {
+          text-align: left;
+        }
+      }
+
+      .print-fields {
+        width: 100%;
+      }
+    }
   }
 }
 
 @page {
   size: A4 portrait;
-  margin: 0 10%;
+  margin: 5% 10%;
   page-break-inside: avoid;
 }
