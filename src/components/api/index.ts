@@ -18,7 +18,7 @@ export const storeDocumentAPI: Function = (payload: object) => {
   const token = getToken();
   return httpRequest("post", "/api/document", payload, token);
 };
-export const updateDocumentAPI = (payload, id) => {
+export const updateDocumentAPI = (payload, id: string | number) => {
   const token = getToken();
   return httpRequest("put", `/api/document/${id}`, payload, token);
 };
@@ -40,4 +40,9 @@ export const getToken: Function = () => {
 export const deleteDocumentByIdAPI: Function = (id: string | number) => {
   const token = getToken();
   return httpRequest("delete", `/api/document/${id}`, {}, token);
+};
+
+export const getDocumentQueryAPI: Function = (payload: unknown) => {
+  const token = getToken();
+  return httpRequest("post", "/api/document/query", payload, token);
 };

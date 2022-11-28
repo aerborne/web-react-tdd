@@ -254,11 +254,17 @@ export default function PrintPage() {
             {console.log({ document })}
           </Col>
         </Row> */}
+          <header className="print-header">
+            <img src={HeaderImg} className="header-img" />
+          </header>
           <table className="print-table">
             <tbody>{renderDetails(document)}</tbody>
           </table>
           <div className="divider-line my-4" />
           <Row>{renderFields(document)}</Row>
+          <footer className="print-header">
+            <img src={HeaderImg} className="header-img" />
+          </footer>
         </div>
       </div>
       {/* <canvas id="print-canvas"></canvas>

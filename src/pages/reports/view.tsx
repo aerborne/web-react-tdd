@@ -83,7 +83,6 @@ export default () => {
           </Panel>
         </Col>
         <Col xs={12} lg={4}>
-          {console.log({ history })}
           <Panel title="ChangeLog" noPadding>
             <>
               <Container className="group-alternate">
