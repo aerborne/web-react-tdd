@@ -39,18 +39,18 @@ export default () => {
 
   const compare = formFields.reduce((prev: object, value) => {
     let current = document[value.field];
-    if (!!current) {
-      var div = window.document.createElement("div");
-      div.innerHTML = current;
-      current = div.textContent || div.innerText || "";
-    }
+    // if (!!current) {
+    //   const div = window.document.createElement("div");
+    //   div.innerHTML = current;
+    //   current = div.textContent || div.innerText || "";
+    // }
 
     let versioned = versionedDocument[value.field];
-    if (!!versioned) {
-      var div = window.document.createElement("div");
-      div.innerHTML = versioned;
-      versioned = div.textContent || div.innerText || "";
-    }
+    // if (!!versioned) {
+    //   const div = window.document.createElement("div");
+    //   div.innerHTML = versioned;
+    //   versioned = div.textContent || div.innerText || "";
+    // }
     prev[value.field] = {
       current,
       versioned,
