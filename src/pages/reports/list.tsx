@@ -83,7 +83,7 @@ export default () => {
             );
           }}
           cellRenderer={({ cellData }: { cellData: string | number }) => {
-            return moment(cellData).format("MMMM Do YYYY, h:mm:ss a");
+            return moment(cellData).format("MMMM D YYYY, h:mm:ss a");
           }}
           width={240}
         />

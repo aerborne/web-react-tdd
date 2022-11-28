@@ -4,15 +4,20 @@
   width: 210mm;
   // height: 297mm;
   background-color: $white;
-  padding: 25.4mm;
+  padding: 15mm 25.4mm;
   font-size: 14.667px;
   // page-break-inside: avoid;
-  page-break-after: always;
 
   .header-img {
     width: 100%;
-    height: 71px;
+    height: auto;
     margin-bottom: 30px;
+  }
+
+  .footer-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
   }
 
   .print-header {
@@ -28,10 +33,9 @@
     margin-right: 20px;
   }
 
-  // .report-group {
-  //   padding: 0;
-
-  // }
+  .report-group {
+    page-break-after: always;
+  }
 
   .print-table {
     margin: 0 auto;
@@ -72,24 +76,6 @@
     visibility: hidden;
   }
 
-  header,
-  footer {
-    position: fixed;
-  }
-
-  header {
-    top: 0;
-  }
-
-  footer {
-    bottom: 0;
-  }
-
-  header,
-  footer {
-    width: 100%;
-  }
-
   #section-to-print,
   #section-to-print * {
     background-color: $white;
@@ -100,36 +86,80 @@
     position: absolute;
     left: 0;
     top: 0;
-
-    .content {
-      width: 100%;
-      margin: 120px auto;
-
-      &>* {
-        page-break-after: always;
-        // page-break-inside: avoid;
-      }
-
-      .print-table {
-        margin: 0 auto;
-        width: 100%;
-        text-align: left;
-        @include font("secondary", 700);
-
-        .text-left {
-          text-align: left;
-        }
-      }
-
-      .print-fields {
-        width: 100%;
-      }
-    }
   }
 }
 
+// @page {
+//   size: A4 portrait;
+//   margin: 5% 10%;
+//   // page-break-inside: avoid;
+
+//   // * {
+//   //   page-break-inside: avoid;
+//   // }
+// }
+
 @page {
   size: A4 portrait;
-  margin: 5% 10%;
-  page-break-inside: avoid;
+  margin: 10mm 20mm;
+
+  table.report-container {
+    page-break-after: always;
+  }
+
+  thead.report-header {
+    display: table-header-group;
+  }
+
+  tfoot.report-footer {
+    display: table-footer-group;
+  }
+
+  .page {
+    page-break-after: always;
+  }
+
+  .print-hidden {
+    visibility: hidden !important;
+  }
+}
+
+@media print {
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  .print-hidden {
+    visibility: hidden !important;
+  }
+}
+
+.page-header,
+.page-header-space {
+  height: 120px;
+  display: block;
+}
+
+.page-footer,
+.page-footer-space {
+  height: 120px;
+  display: block;
+}
+
+.page-footer {
+  position: fixed;
+  visibility: hidden;
+  bottom: 0;
+  width: 100%;
+}
+
+.page-header {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }

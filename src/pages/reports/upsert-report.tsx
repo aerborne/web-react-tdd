@@ -41,7 +41,6 @@ export default () => {
   useEffect(() => {
     const fetchData = async () => {
       setDataLoading(true);
-      console.log("SIDE EFFECT CALLED");
       const result = await getDocumentByIdAPI(id);
       const doc = result?.data?.result || {};
       const newValues = formFields

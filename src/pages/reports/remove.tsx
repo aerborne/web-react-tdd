@@ -9,7 +9,6 @@ import Loader from "../../components/shared/loader";
 
 export default (props) => {
   const { id } = useParams();
-  console.log({ id, props });
   const navigate = useNavigate();
   const [document, setDocument] = useState();
   const [loading, setLoading] = useState(false);
@@ -20,7 +19,6 @@ export default (props) => {
         setDocument(result?.data?.result || []);
       }
     };
-    console.log("REPEAT?");
     fetchAPI();
   }, [setDocument]);
 
