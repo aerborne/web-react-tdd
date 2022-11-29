@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import List from "./list";
+import List from "./list2";
 
 export default function () {
   return (

@@ -335,7 +335,7 @@ body {
   }
 
   .kebab-item {
-    padding: 10px 25px;
+    padding: 13px 25px !important;
   }
 }
 
@@ -381,4 +381,51 @@ body {
 .diff-label {
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.card-group {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+  .document-card {
+    background-color: $white;
+    padding: 20px;
+    border: 1px solid $gray;
+    border-left: 5px solid $green;
+    margin-bottom: 10px;
+    box-shadow: 3px 5px 4px $gray3;
+    align-items: center;
+    width: 100%;
+
+    .card-subject {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .card-date,
+    .card-author {
+      font-size: 12px;
+    }
+
+    .card-dropdown {
+      justify-self: flex-end;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.no-link {
+  color: $black;
+  text-decoration: none;
+
+  &:hover {
+    color: $black;
+  }
+}
+
+.card-search {
+  display: flex;
+  flex-direction: row;
 }
