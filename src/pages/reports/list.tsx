@@ -18,7 +18,7 @@ export default () => {
     <div>
       <SearchableTable
         panelOptions={[
-          { title: "Add Report", to: "/report-add", icon: faPlus },
+          { title: "Create Report", to: "/report-add", icon: faPlus },
         ]}
         tableRef={tableRef}
         fetchAPI={getAllDocumentsAPI}

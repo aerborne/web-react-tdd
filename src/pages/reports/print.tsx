@@ -51,8 +51,8 @@ export default function PrintPage() {
             return (
               <>
                 <tr key={field}>
-                  <td className="text-left print-header-label">{label}:</td>
-                  <td>{document[field]}</td>
+                  <td className="text-left print-header-label">{`${label}:`}</td>
+                  <td className="px-3">{document[field]}</td>
                 </tr>
               </>
             );

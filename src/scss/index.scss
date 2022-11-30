@@ -8,8 +8,10 @@
 
 body {
   background-color: $aliceblue !important;
+  background-image: $aliceblue-gradient !important;
   color: $black;
   @include font("primary", 400);
+  min-height: 100vh;
 }
 
 .paper {
@@ -389,16 +391,19 @@ body {
   align-items: center;
 
   .document-card {
+    display: flex;
     background-color: $white;
     padding: 20px;
     border: 1px solid $gray;
-    border-left: 5px solid $green;
-    margin-bottom: 10px;
+    border-left: 5px solid $darkblue;
+    margin-bottom: 15px;
     box-shadow: 3px 5px 4px $gray3;
     align-items: center;
     width: 100%;
+    margin-right: 0;
 
     .card-subject {
+      color: $teal;
       font-size: 16px;
       font-weight: 700;
     }
@@ -406,6 +411,7 @@ body {
     .card-date,
     .card-author {
       font-size: 12px;
+      @include font("secondary", 400)
     }
 
     .card-dropdown {
@@ -428,4 +434,41 @@ body {
 .card-search {
   display: flex;
   flex-direction: row;
+
+  .card-search-input {
+    height: 34.5px;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 0 10px;
+    margin: 0;
+  }
+}
+
+.app-breadcrumb {
+  background-color: $white;
+  border-bottom: 1px solid $gray;
+}
+
+$breadcrumb-divider: ">" !important;
+
+.breadcrumb-item+.breadcrumb-item::before,
+li.breadcrumb-item.active::before {
+  content: ">" !important;
+
+}
+
+.breadcrumb-item {
+  font-size: 18px;
+  font-weight: 400;
+
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+
+}
+
+.css-cncyp1-word-diff {
+  display: flex !important;
 }

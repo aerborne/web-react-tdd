@@ -11,7 +11,7 @@ export default () => {
     window.location.href = "/";
   };
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="teal" variant="dark">
       <Container>
         <Navbar.Brand href="/">FERDS</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -21,7 +21,9 @@ export default () => {
             <NavLink href="/review">Reviews</NavLink>
           </Nav>
           <Nav>
-            <Nav.Link onClick={() => handleLogout()}>Logout</Nav.Link>
+            <Nav.Link className="color-white" onClick={() => handleLogout()}>
+              Logout
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

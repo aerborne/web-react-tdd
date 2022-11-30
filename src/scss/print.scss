@@ -1,12 +1,8 @@
 .print-page {
-  // border: 1px solid black;
-  // 297 x 210 mm
   width: 210mm;
-  // height: 297mm;
   background-color: $white;
   padding: 15mm 25.4mm;
   font-size: 14.667px;
-  // page-break-inside: avoid;
 
   .header-img {
     width: 100%;
@@ -29,12 +25,13 @@
   }
 
   .print-header-label {
+    vertical-align: top;
     text-transform: uppercase;
     margin-right: 20px;
   }
 
   .report-group {
-    page-break-after: always;
+    page-break-after: avoid;
   }
 
   .print-table {
@@ -104,7 +101,7 @@
   margin: 10mm 20mm;
 
   table.report-container {
-    page-break-after: always;
+    page-break-after: avoid;
   }
 
   thead.report-header {
@@ -116,7 +113,7 @@
   }
 
   .page {
-    page-break-after: always;
+    page-break-after: avoid;
   }
 
   .print-hidden {
@@ -140,13 +137,13 @@
 
 .page-header,
 .page-header-space {
-  height: 120px;
+  height: 110px;
   display: block;
 }
 
 .page-footer,
 .page-footer-space {
-  height: 120px;
+  height: 110px;
   display: block;
 }
 

@@ -1,14 +1,27 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import List from "./list2";
 
 export default function () {
   return (
-    <Container className="mt-5">
-      <Row>
-        <Col>
-          <List />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <div className="app-breadcrumb">
+        <Container>
+          <Row className="pt-3">
+            <Col className="align-items-center">
+              <Breadcrumb>
+                <Breadcrumb.Item href="/report">Reports</Breadcrumb.Item>
+              </Breadcrumb>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Container className="">
+        <Row>
+          <Col>
+            <List />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

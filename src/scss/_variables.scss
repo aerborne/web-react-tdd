@@ -7,9 +7,18 @@ $gray3: #c3c3c3;
 $darkblue: #070033;
 $darkblue2: #211c43;
 $dimblue: #333042;
-$aliceblue: #F0F8FF;
+$aliceblue: #F0F4F8;
 $lightblue: #cce5fd;
 $lightblue2: #e8f3fd;
 $lightblue3: #c4def6;
 $scarlet: #b50303;
 $green: #32e841;
+$teal: #0f3340;
+$teal2: #094c64;
+$teal3: #1c7b9d;
+$darkteal: #124355;
+$teal-gradient: linear-gradient(90deg, $teal,
+  $teal3, $teal);
+
+$aliceblue-gradient: linear-gradient(45deg, $aliceblue,
+  $lightblue3, $aliceblue);

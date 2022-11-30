@@ -10,6 +10,7 @@ import {
   faMultiply,
   faPrint,
   faSearch,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default () => {
@@ -38,7 +39,7 @@ export default () => {
         {
           title: "Remove Report",
           to: `/report/view/${document?.id}/remove`,
-          icon: faMultiply,
+          icon: faTrash,
         },
         {
           title: "Print Report",
@@ -48,40 +49,62 @@ export default () => {
         },
       ];
       return (
-        <Col xs={12} sm={6} xl={4} key={index}>
-          <Row className="document-card">
-            <Col>
-              <Link className="no-link" to={`/report/view/${document?.id}`}>
-                <div className="card-subject">{document.subject}</div>
-                <div className="card-date">
-                  {moment(document?.created_at).format("MMMM D YYYY, h:mm a")}
-                </div>
-                <div className="card-author">
-                  Author: {document?.user?.first_name}
-                </div>
-              </Link>
-            </Col>
-            <Col xs={2} className="card-dropdown">
-              <Dropdown>
-                <Dropdown.Toggle
-                  variant="gray"
-                  className="kebab-dropdown"
-                  id="dropdown-basic"
-                >
-                  <img src={KebabSVG} />
-                </Dropdown.Toggle>
+        <Col xs={12} key={index}>
+          {/* <Col xs={12} sm={6} xl={4} key={index}> */}
+          <div className="document-card">
+            <Row className="w-100">
+              <Col>
+                <Link className="no-link" to={`/report/view/${document?.id}`}>
+                  <div className="card-subject">{document.subject}</div>
+                  <div className="card-date">
+                    {moment(document?.created_at).format("MMMM D YYYY, h:mm a")}
+                  </div>
+                  <div className="card-author">
+                    Author: {document?.user?.first_name}
+                  </div>
+                </Link>
+              </Col>
+              <Col xs="auto" className="card-dropdown">
+                <Dropdown className="ml-auto">
+                  <Dropdown.Toggle
+                    variant="gray"
+                    className="kebab-dropdown"
+                    id="dropdown-basic"
+                  >
+                    <img src={KebabSVG} />
+                  </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  {(panelOptions || []).length > 0 &&
-                    (panelOptions || []).map((panelOption) => {
-                      if (panelOption?.target === "_blank") {
+                  <Dropdown.Menu>
+                    {(panelOptions || []).length > 0 &&
+                      (panelOptions || []).map((panelOption) => {
+                        if (panelOption?.target === "_blank") {
+                          return (
+                            // <div>
+                            <a
+                              className="dropdown-item kebab-item"
+                              key={panelOption.to}
+                              href={panelOption.to}
+                              target="_blank"
+                            >
+                              <span className="mr-1">
+                                <FontAwesomeIcon
+                                  className="kebab-option-icon"
+                                  icon={panelOption.icon}
+                                />
+                              </span>
+                              {panelOption.title}
+                            </a>
+                            // </div>
+                            // <Dropdown.Item key={panelOption.to}>
+
+                            // </Dropdown.Item>
+                          );
+                        }
                         return (
-                          // <div>
-                          <a
+                          <Link
                             className="dropdown-item kebab-item"
                             key={panelOption.to}
-                            href={panelOption.to}
-                            target="_blank"
+                            to={panelOption.to}
                           >
                             <span className="mr-1">
                               <FontAwesomeIcon
@@ -90,33 +113,14 @@ export default () => {
                               />
                             </span>
                             {panelOption.title}
-                          </a>
-                          // </div>
-                          // <Dropdown.Item key={panelOption.to}>
-
-                          // </Dropdown.Item>
+                          </Link>
                         );
-                      }
-                      return (
-                        <Link
-                          className="dropdown-item kebab-item"
-                          key={panelOption.to}
-                          to={panelOption.to}
-                        >
-                          <span className="mr-1">
-                            <FontAwesomeIcon
-                              className="kebab-option-icon"
-                              icon={panelOption.icon}
-                            />
-                          </span>
-                          {panelOption.title}
-                        </Link>
-                      );
-                    })}
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-          </Row>
+                      })}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+            </Row>
+          </div>
         </Col>
       );
     });
@@ -124,14 +128,23 @@ export default () => {
   return (
     <>
       <Row className="card-search my-3">
-        <button>
-          <FontAwesomeIcon className="" icon={faSearch} />
-        </button>
-        <input
-          placeholder="Search..."
-          type="text"
-          className="card-search-input"
-        />
+        <Col>
+          <form>
+            <button className="btn btn-gray btn-search">
+              <FontAwesomeIcon className="" icon={faSearch} />
+            </button>
+            <input
+              placeholder="Search..."
+              type="text"
+              className="card-search-input"
+            />
+          </form>
+        </Col>
+        <Col xs="auto">
+          <Link className="btn btn-teal rounded-0 ml-auto" to="/report-add">
+            {"Create Report"}
+          </Link>
+        </Col>
       </Row>
       <Row className="card-group">{renderCard()}</Row>
     </>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Breadcrumb } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
@@ -135,7 +135,7 @@ export default () => {
         // localStorage.setItem("user_access_token", result?.data?.access_token);
         // localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
         // localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
-        onClose();
+        navigate(`/report/view/${id}`);
       } else {
         return setErrorMessage("Something Happened");
       }
@@ -150,53 +150,69 @@ export default () => {
   }
 
   return (
-    <Container>
-      {errorMessage && (
-        <Row>
+    <>
+      <div className="app-breadcrumb">
+        <Container>
+          <Row className="pt-3">
+            <Col className="align-items-center">
+              <Breadcrumb>
+                <Breadcrumb.Item href="/report">Reports</Breadcrumb.Item>
+                <Breadcrumb.Item active>
+                  {!!id ? "Update" : "Create"}
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Container>
+        {errorMessage && (
+          <Row>
+            <Col>
+              <div className="alert alert-danger mt-5">{errorMessage}</div>
+            </Col>
+          </Row>
+        )}
+        <Row className="align-items-center justify-items-center my-4">
           <Col>
-            <div className="alert alert-danger mt-5">{errorMessage}</div>
-          </Col>
-        </Row>
-      )}
-      <Row className="align-items-center justify-items-center my-5">
-        <Col>
-          <Panel title={`${id ? "Update Report" : "Add Report"}`}>
-            <form
-              className="form-group add-report"
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              {renderFields()}
-              <Row>
-                <div className="btn-group col-6 ml-auto">
-                  {/* <Link
+            <Panel title={`${id ? "Update Report" : "Create Report"}`}>
+              <form
+                className="form-group add-report"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                {renderFields()}
+                <Row>
+                  <div className="btn-group col-6 ml-auto">
+                    {/* <Link
                   to={`/report/view/${id}`}
                   disabled={loading}
                   className="mt-3 btn-darkblue px-4"
                 >
                   {"Cancel"}
                 </Link> */}
-                  <Button
-                    variant="gray"
-                    className="mt-3 px-4 mr-3"
-                    onClick={onClose}
-                  >
-                    {"Cancel"}
-                  </Button>
+                    <Button
+                      variant="gray"
+                      className="mt-3 px-4 mr-3"
+                      onClick={onClose}
+                    >
+                      {"Cancel"}
+                    </Button>
 
-                  <Button
-                    variant="darkblue"
-                    type="submit"
-                    disabled={loading}
-                    className="mt-3 px-4"
-                  >
-                    {loading ? "Loading..." : id ? "Update" : "Save"}
-                  </Button>
-                </div>
-              </Row>
-            </form>
-          </Panel>
-        </Col>
-      </Row>
-    </Container>
+                    <Button
+                      variant="teal"
+                      type="submit"
+                      disabled={loading}
+                      className="mt-3 px-4"
+                    >
+                      {loading ? "Loading..." : id ? "Update" : "Save"}
+                    </Button>
+                  </div>
+                </Row>
+              </form>
+            </Panel>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
