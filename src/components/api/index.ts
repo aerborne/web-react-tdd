@@ -46,3 +46,8 @@ export const getDocumentQueryAPI: Function = (payload: unknown) => {
   const token = getToken();
   return httpRequest("post", "/api/document/query", payload, token);
 };
+
+export const getReviewQueryAPI: Function = (payload: unknown) => {
+  const token = getToken();
+  return httpRequest("post", "/api/review/query", payload, token);
+};

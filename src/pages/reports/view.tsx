@@ -5,8 +5,9 @@ import reportFields from "../../components/utils/report-fields";
 import Panel from "../../components/shared/panel";
 import Loader from "../../components/shared/loader";
 import { faPrint, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Route, Routes } from "react-router-dom";
 import moment from "moment";
+import RemoveReport from "./remove";
 
 export default () => {
   const { id } = useParams();
@@ -37,8 +38,8 @@ export default () => {
           type: string;
         }) => {
           return (
-            <Col xs={12}>
-              <div key={field} className="report-group mb-3">
+            <Col xs={12} key={field}>
+              <div className="report-group mb-3">
                 <label>{label}</label>
                 {type === "text" ? (
                   <div className="report-field">{document[field]}</div>
@@ -56,6 +57,10 @@ export default () => {
   };
   return (
     <>
+      {/* <Routes>
+        <Route path="/report/view/:id/remove" element={<RemoveReport />} />
+        <Route path="/remove" element={<RemoveReport />} />
+      </Routes> */}
       <div className="app-breadcrumb">
         <Container>
           <Row className="pt-3">

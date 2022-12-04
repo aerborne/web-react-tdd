@@ -135,7 +135,7 @@ export default () => {
         // localStorage.setItem("user_access_token", result?.data?.access_token);
         // localStorage.setItem("user_info", JSON.stringify(result?.data?.user));
         // localStorage.setItem("user_roles", JSON.stringify(result?.data?.roles));
-        navigate(`/report/view/${id}`);
+        navigate(`/report/view/${id ? id : result?.data?.result?.id}`);
       } else {
         return setErrorMessage("Something Happened");
       }

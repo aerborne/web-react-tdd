@@ -1,4 +1,4 @@
-// import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "./shared/header";
 import LineLoader from "./shared/loader-line";
 import { AppContext } from "./context/app-context";

@@ -47,7 +47,7 @@ body {
 
 .panel {
   background-color: $white;
-  border: 1px solid $gray;
+  // border: 1px solid $gray;
   // border-radius: 5px;
   box-shadow: 3px 5px 4px $gray3;
 
@@ -386,6 +386,8 @@ body {
 }
 
 .card-group {
+  max-height: 670px;
+  overflow-y: scroll;
   display: flex;
   justify-items: center;
   align-items: center;

@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Col, Row, Dropdown } from "react-bootstrap";
-import { getDocumentQueryAPI } from "../../components/api/index";
+import { getReviewQueryAPI } from "../../components/api/index";
 import { FontAwesomeIcon, IconProp } from "@fortawesome/react-fontawesome";
 import KebabSVG from "../../assets/kebab.svg";
 import {
@@ -22,10 +22,10 @@ export default () => {
   });
 
   const fetchAPI = useCallback(async () => {
-    const result = await getDocumentQueryAPI(payload);
+    const result = await getReviewQueryAPI(payload);
     if (result?.status === 200) {
-      const documents = result?.data?.results?.data || [];
-      setData(documents);
+      const reviews = result?.data?.results?.data || [];
+      setData(reviews);
     }
   }, [setData, payload]);
   useEffect(() => {
@@ -51,7 +51,7 @@ export default () => {
     const searchParams = (input: string) => {
       return [
         {
-          field: "subject",
+          field: "title",
           op: "like",
           value: `%${input}%`,
         },
@@ -63,21 +63,21 @@ export default () => {
   };
 
   const renderCard = () => {
-    return data.map((document, index) => {
+    return data.map((review, index) => {
       const panelOptions = [
         {
           title: "Update Report",
-          to: `/report/view/${document?.id}/edit`,
+          to: `/report/view/${review?.id}/edit`,
           icon: faEdit,
         },
         {
           title: "Remove Report",
-          to: `/report/view/${document?.id}/remove`,
+          to: `/report/view/${review?.id}/remove`,
           icon: faTrash,
         },
         {
           title: "Print Report",
-          to: `/report/view/${document?.id}/print`,
+          to: `/report/view/${review?.id}/print`,
           icon: faPrint,
           target: "_blank",
         },
@@ -88,14 +88,14 @@ export default () => {
           <div className="document-card">
             <Row className="w-100">
               <Col>
-                <Link className="no-link" to={`/report/view/${document?.id}`}>
-                  <div className="card-subject">{document.subject}</div>
+                <Link className="no-link" to={`/report/view/${review?.id}`}>
+                  <div className="card-subject">{review.title}</div>
                   <div className="card-date">
-                    {moment(document?.created_at).format("MMMM D YYYY, h:mm a")}
+                    {moment(review?.created_at).format("MMMM D YYYY, h:mm a")}
                   </div>
                   <div className="card-author">
                     Author:{" "}
-                    {`${document?.created_by?.first_name} ${document?.created_by?.last_name}`}
+                    {`${review?.created_by?.first_name} ${review?.created_by?.last_name}`}
                   </div>
                 </Link>
               </Col>
@@ -177,8 +177,8 @@ export default () => {
           </form>
         </Col>
         <Col xs="auto">
-          <Link className="btn btn-teal rounded-0 ml-auto" to="/report-add">
-            {"Create Report"}
+          <Link className="btn btn-teal rounded-0 ml-auto" to="/review-add">
+            {"Create Review"}
           </Link>
         </Col>
       </Row>
