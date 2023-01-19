@@ -18,7 +18,7 @@ export const storeDocumentAPI: Function = (payload: object) => {
   const token = getToken();
   return httpRequest("post", "/api/document", payload, token);
 };
-export const updateDocumentAPI = (payload, id: string | number) => {
+export const updateDocumentAPI = (payload: any, id: string | number) => {
   const token = getToken();
   return httpRequest("put", `/api/document/${id}`, payload, token);
 };

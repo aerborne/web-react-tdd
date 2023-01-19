@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const useStateWithCallback = (initialValue) => {
+const useStateWithCallback = (initialValue: any) => {
   const [value, setValue] = useState(initialValue);
 
-  const setValueAndCallback = (newValue, callback) => {
-    setValue((prevValue) =>
+  const setValueAndCallback = (newValue: any, callback: Function) => {
+    setValue((prevValue: any) =>
       callback ? callback(prevValue, newValue) : newValue
     );
   };

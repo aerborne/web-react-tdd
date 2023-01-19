@@ -40,7 +40,7 @@ export default function () {
   };
 
   return (
-    <Container className="vh100">
+    <Container className="vh100 login-page" data-testid="login-page">
       <Row>
         {/* <Col xs={12}></Col> */}
         <Col
@@ -54,7 +54,9 @@ export default function () {
               {/* <span className="mr-3">
                 <FontAwesomeIcon icon={faUser} />
               </span> */}
-              <div className="ml-3">LOGIN</div>
+              <div className="ml-3" data-testid="login-title">
+                LOGIN
+              </div>
             </div>
             {errorMessage && (
               <Row>

@@ -4,7 +4,7 @@ export default function () {
   return (
     <Container className="mt-5">
       <Row>
-        <Col>Home hehe</Col>
+        <Col data-testid="home-title">Home hehe</Col>
       </Row>
     </Container>
   );

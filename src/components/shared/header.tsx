@@ -13,12 +13,11 @@ export default () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="teal" variant="dark">
       <Container>
-        <Navbar.Brand href="/">FERDS</Navbar.Brand>
+        <Navbar.Brand href="/">React</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <NavLink href="/report">Reports</NavLink>
-            <NavLink href="/review">Reviews</NavLink>
+            <NavLink href="/">Home</NavLink>
           </Nav>
           <Nav>
             <Nav.Link className="color-white" onClick={() => handleLogout()}>
